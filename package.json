@@ -1,0 +1,46 @@
+{
+  "name": "autolimpio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "cross-env NODE_ENV=production npm-run-all clean -p build:*",
+    "build:eleventy": "eleventy",
+    "build:webpack": "webpack --mode=development",
+    "clean": "rm -rf dist",
+    "start": "npm-run-all clean -p build:* -p start:*",
+    "start:eleventy": "eleventy --serve --quiet",
+    "start:webpack": "webpack --watch",
+    "deploy": "npm-run-all build:* gh-pages",
+    "gh-pages": "gh-pages -d dist"
+   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hugomoraga/autolimpio.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hugomoraga/autolimpio/issues"
+  },
+  "homepage": "https://github.com/hugomoraga/autolimpio#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^1.0.0",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^4.0.0",
+    "@tailwindcss/typography": "^0.5.2",
+    "autoprefixer": "^10.4.2",
+    "copy-webpack-plugin": "^10.2.4",
+    "cross-env": "^7.0.3",
+    "css-loader": "^6.6.0",
+    "gh-pages": "^3.2.3",
+    "mini-css-extract-plugin": "^2.5.3",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.6",
+    "postcss-import": "^14.0.2",
+    "postcss-loader": "^6.2.1",
+    "sass": "^1.49.8",
+    "sass-loader": "^12.6.0",
+    "webpack": "^5.69.1",
+    "webpack-cli": "^4.9.2"
+  }
+}
