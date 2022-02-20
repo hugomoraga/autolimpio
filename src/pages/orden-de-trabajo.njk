@@ -6,38 +6,67 @@
           <h3 class="text-center py-3">Orden de Trabajo</h3>
           <div class="row">
             <div class="col-8 offset-2 border p-3">
-              <form class="requires-validation" novalidate>
+              <form class="requires-validation" novalidate name=orden>
                 <div class="col-12 py-2">
                   <h4>Cliente:</h4>
                 </div>
                 <div class="row py-2">
-                  <div class="col-md-10 col-10">
-                    <input
-                      class="form-control"
-                      type="number"
-                      name="rut"
-                      placeholder="Rut"
-                      required
-                    />
-                    <div class="valid-feedback"></div>
-                    <div class="invalid-feedback">
-                      El Nombre no puede estar en blanco
+                  <div class="col-6">
+                    <div class="row">
+                      <div class="col-8">
+                        <input
+                        class="form-control"
+                        type="number"
+                        name="rut"
+                        placeholder="Rut"
+                        maxlength="8"
+                        min="1" 
+                        max="99999999"
+                        oninput="maxLengthCheck(this)"
+                        required
+                        />
+                        <div class="valid-feedback"></div>
+                        <div class="invalid-feedback">
+                          El Nombre no puede estar en blanco
+                        </div>
+                      </div>
+                      <div class="col-1" style="margin-left:-20px; margin-top:5px;">- </div>
+                      <div class=" col-2" style="margin-left:-20px;">
+                        <input
+                          class="form-control"
+                          type="text"
+                          name="digito-verificador"
+                          placeholder=""
+                          required
+                        />
+                        <div class="valid-feedback"></div>
+                        <div class="invalid-feedback">
+                          El rut no puede estar en blanco
+                        </div>
+                      </div>
+
                     </div>
+                  
                   </div>
-                  <div class="col-md-2 col-2">
+                    <div class="col-6">
                     <input
                       class="form-control"
                       type="text"
-                      name="digito-verificador"
-                      placeholder=""
+                      id="nombrecliente"
+                      name="nombrecliente"
+                      placeholder="Nombre del Cliente"
+                      size="20"
+                      maxlength="20"
+                      pattern="[A-Za-z]+"
                       required
                     />
                     <div class="valid-feedback"></div>
                     <div class="invalid-feedback">
-                      El rut no puede estar en blanco
+                      El modelo no puede estar en blanco
                     </div>
+
+                
                   </div>
-                </div>
 
                 <div class="col-12 py-2">
                   <h4>Datos del Vehiculo:</h4>
@@ -63,6 +92,9 @@
                     type="text"
                     name="marca"
                     placeholder="Marca"
+                    size="20"
+                    maxlength="20"
+                    pattern="[A-Za-z]+"
                     required
                   />
                   <div class="valid-feedback"></div>
@@ -78,6 +110,9 @@
                       type="text"
                       name="modelo"
                       placeholder="Modelo"
+                      size="20"
+                      maxlength="20"
+                      pattern="[A-Za-z]+"
                       required
                     />
                     <div class="valid-feedback"></div>
@@ -92,6 +127,10 @@
                       type="text"
                       name="año"
                       placeholder="Año"
+                      maxlength="4"
+                      min="1" 
+                      max="9999"
+                      oninput="maxLengthCheck(this)"
                       required
                     />
                     <div class="valid-feedback"></div>
@@ -102,58 +141,117 @@
                 </div>
 
                 <div class="form-check py-2">
-                    <input class="form-check-input" type="checkbox" value="revision" id="invalidCheck" required>
-                    <label class="form-check-label fs-5">Revision Tecnica al dia</label>
-                   <div class="invalid-feedback">Por favor confirmar revision tecnica</div>
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="revision"
+                    id="invalidCheck"
+                    required
+                  />
+                  <label class="form-check-label fs-5"
+                    >Revision Tecnica al dia</label
+                  >
+                  <div class="invalid-feedback">
+                    Por favor confirmar revision tecnica
                   </div>
+                </div>
 
-                  <div class="col-12 py-2">
-                    <h4>Servicios:</h4>
-                  </div>  
+                <div class="col-12 py-2">
+                  <h4>Servicios:</h4>
+                </div>
 
-                  <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" value="exterior" id="invalidCheck" required>
-                    <label class="form-check-label">Lavado exterior | $7000 </label>
-                   <div class="invalid-feedback">Por favor confirmar servicio</div>
+                <div class="form-check form-switch check-servicios">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="exterior"
+                    name="servicios"
+                    onclick="calcularTotal()"
+
+                    id="invalidCheck"
+                    required
+                  />
+                  <label class="form-check-label"
+                    >Lavado exterior | $7000
+                  </label>
+                  <div class="invalid-feedback">
+                    Por favor confirmar servicio
                   </div>
+                </div>
 
-                  <div class="form-check form-switch py-2">
-                    <input class="form-check-input" type="checkbox" value="motor" id="invalidCheck" required>
-                    <label class="form-check-label">Lavado de motor | $5000 </label>
-                   <div class="invalid-feedback">Por favor confirmar servicio</div>
+                <div class="form-check form-switch py-2">
+                  <input
+                    class="form-check-input"
+                    type="checkbox""
+                    name="servicios"
+                    value="motor"
+                    onclick="calcularTotal()"
+                    id="invalidCheck"
+                    required
+                  />
+                  <label class="form-check-label"
+                    >Lavado de motor | $5000
+                  </label>
+                  <div class="invalid-feedback">
+                    Por favor confirmar servicio
                   </div>
+                </div>
 
+                <div class="col-12 py-2">
+                  <select class="form-select" required>
+                    <option selected disabled value="">
+                      Trabajador Encargado
+                    </option>
+                    <option value="juanperez">Juan Perez</option>
+                    <option value="Josefuentes">Jose Fuentes</option>
+                    <option value="camilomendez">Camilo Mendez</option>
+                  </select>
+                  <div class="valid-feedback">Encargado Seleccionado</div>
+                  <div class="invalid-feedback">
+                    Selecciona un encargado del servicio
+                  </div>
+                </div>
 
-                  <div class="col-md-12 py-2">
-                    <select class="form-select" required>
-                      <option selected disabled value="">Trabajador Encargado</option>
-                      <option value="juanperez">Juan Perez</option>
-                      <option value="Josefuentes">Jose Fuentes</option>
-                      <option value="camilomendez">Camilo Mendez</option>
-                    </select>
-                    <div class="valid-feedback">Encargado Seleccionado</div>
-                    <div class="invalid-feedback">
-                      Selecciona un encargado del servicio
+                <div class="col-12 py-2">
+                  <h4>Fecha:</h4>
+                </div>
+
+                <div class="row">
+                  <div class="col-8">
+                    <div class="input-group mb-4">
+                      <i class="bi bi-calendar-date input-group-text"></i>
+                      <input
+                        type="text"
+                        class="datepicker_input form-control"
+                        placeholder="Elegir fecha"
+                        required
+                        aria-label="Calendario"
+                      />
                     </div>
+
                   </div>
+                  <div class="col-4">
+                    <input
+                    class="form-control"
+                    type="number"
+                    name="Hora"
+                    placeholder="Hora"
+                    required
+                    maxlength="4"
+                    min="1" 
+                    max="9999"
+                    oninput="maxLengthCheck(this)"
+                  />
+                  <div class="valid-feedback"></div>
+                  <div class="invalid-feedback">
+                    Hora inexistente.
+                  </div>
+                  
+                  </div>
+                </div>
 
-                  <div class="col-12 py-2">
-                    <h4>Fecha:</h4>
-                  </div>  
+             
 
-
-                    <div class="col-5 py-2">
-                      <div class="input-group date" id="datepicker">
-                        <input type="text" class="form-control" id="date"/>
-                        <span class="input-group-append">
-                          <span class="input-group-text bg-light d-block">
-                            <i class="fa fa-calendar"></i>
-                          </span>
-                        </span>
-                      </div>
-                    </div>
-
-                
                 <div class="form-check">
                   <input
                     class="form-check-input"
@@ -170,9 +268,17 @@
                   </div>
                 </div>
 
+                <div class="row">
+                  <div class="col ">
+                    <p>Total a pagar: </p><input id="pagototal" type="text" name="total" readonly>
+                  </div>
+                   
+
+                </div>
+
                 <div class="form-button mt-3">
-                  <button id="submit" type="submit" class="btn btn-primary">
-                    Registrar
+                  <button id="submit" type="submit" class="btn btn-primary" onclick="alertPago()">
+                   Crear orden
                   </button>
                 </div>
               </form>
@@ -184,4 +290,10 @@
   </div>
 </div>
 
+
 <script src="{{ '/assets/js/validacion.js' | url }}"></script>
+<script src="{{ '/assets/js/validacionnumero.js' | url }}"></script>
+<script src="{{ '/assets/js/calcularservicios.js' | url }}"></script>
+<script src="{{ '/assets/js/alertapago.js' | url }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.1.4/dist/js/datepicker-full.min.js"></script>
+<script src="{{ '/assets/js/datepicker-init.js' | url }}"></script>
