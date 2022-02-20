@@ -1,0 +1,187 @@
+<div class="form-body">
+  <div class="row">
+    <div class="form-holder">
+      <div class="form-content">
+        <div class="form-items">
+          <h3 class="text-center py-3">Orden de Trabajo</h3>
+          <div class="row">
+            <div class="col-8 offset-2 border p-3">
+              <form class="requires-validation" novalidate>
+                <div class="col-12 py-2">
+                  <h4>Cliente:</h4>
+                </div>
+                <div class="row py-2">
+                  <div class="col-md-10 col-10">
+                    <input
+                      class="form-control"
+                      type="number"
+                      name="rut"
+                      placeholder="Rut"
+                      required
+                    />
+                    <div class="valid-feedback"></div>
+                    <div class="invalid-feedback">
+                      El Nombre no puede estar en blanco
+                    </div>
+                  </div>
+                  <div class="col-md-2 col-2">
+                    <input
+                      class="form-control"
+                      type="text"
+                      name="digito-verificador"
+                      placeholder=""
+                      required
+                    />
+                    <div class="valid-feedback"></div>
+                    <div class="invalid-feedback">
+                      El rut no puede estar en blanco
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12 py-2">
+                  <h4>Datos del Vehiculo:</h4>
+                </div>
+                <div class="col-md-12 py-2">
+                  <select class="form-select" required>
+                    <option selected disabled value="">Tipo de Vehiculo</option>
+                    <option value="furgon">Furgón</option>
+                    <option value="automovil">Automovíl</option>
+                    <option value="camion">Camión</option>
+                    <option value="camioneta">Camioneta</option>
+                    <option value="moto">Moto</option>
+                  </select>
+                  <div class="valid-feedback">Tipo Seleccionado</div>
+                  <div class="invalid-feedback">
+                    Selecciona un tipo de vehiculo
+                  </div>
+                </div>
+
+                <div class="col-md-12 py-2">
+                  <input
+                    class="form-control"
+                    type="text"
+                    name="marca"
+                    placeholder="Marca"
+                    required
+                  />
+                  <div class="valid-feedback"></div>
+                  <div class="invalid-feedback">
+                    La marca no puede estar en blanco
+                  </div>
+                </div>
+
+                <div class="row py-2">
+                  <div class="col-8">
+                    <input
+                      class="form-control"
+                      type="text"
+                      name="modelo"
+                      placeholder="Modelo"
+                      required
+                    />
+                    <div class="valid-feedback"></div>
+                    <div class="invalid-feedback">
+                      El modelo no puede estar en blanco
+                    </div>
+                  </div>
+
+                  <div class="col-4">
+                    <input
+                      class="form-control"
+                      type="text"
+                      name="año"
+                      placeholder="Año"
+                      required
+                    />
+                    <div class="valid-feedback"></div>
+                    <div class="invalid-feedback">
+                      El año no puede estar en blanco
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-check py-2">
+                    <input class="form-check-input" type="checkbox" value="revision" id="invalidCheck" required>
+                    <label class="form-check-label fs-5">Revision Tecnica al dia</label>
+                   <div class="invalid-feedback">Por favor confirmar revision tecnica</div>
+                  </div>
+
+                  <div class="col-12 py-2">
+                    <h4>Servicios:</h4>
+                  </div>  
+
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" value="exterior" id="invalidCheck" required>
+                    <label class="form-check-label">Lavado exterior | $7000 </label>
+                   <div class="invalid-feedback">Por favor confirmar servicio</div>
+                  </div>
+
+                  <div class="form-check form-switch py-2">
+                    <input class="form-check-input" type="checkbox" value="motor" id="invalidCheck" required>
+                    <label class="form-check-label">Lavado de motor | $5000 </label>
+                   <div class="invalid-feedback">Por favor confirmar servicio</div>
+                  </div>
+
+
+                  <div class="col-md-12 py-2">
+                    <select class="form-select" required>
+                      <option selected disabled value="">Trabajador Encargado</option>
+                      <option value="juanperez">Juan Perez</option>
+                      <option value="Josefuentes">Jose Fuentes</option>
+                      <option value="camilomendez">Camilo Mendez</option>
+                    </select>
+                    <div class="valid-feedback">Encargado Seleccionado</div>
+                    <div class="invalid-feedback">
+                      Selecciona un encargado del servicio
+                    </div>
+                  </div>
+
+                  <div class="col-12 py-2">
+                    <h4>Fecha:</h4>
+                  </div>  
+
+
+                    <div class="col-5 py-2">
+                      <div class="input-group date" id="datepicker">
+                        <input type="text" class="form-control" id="date"/>
+                        <span class="input-group-append">
+                          <span class="input-group-text bg-light d-block">
+                            <i class="fa fa-calendar"></i>
+                          </span>
+                        </span>
+                      </div>
+                    </div>
+
+                
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="invalidCheck"
+                    required
+                  />
+                  <label class="form-check-label"
+                    >Confirmo que la informacion es correcta</label
+                  >
+                  <div class="invalid-feedback">
+                    Por favor confirmar que la informacion es correcta
+                  </div>
+                </div>
+
+                <div class="form-button mt-3">
+                  <button id="submit" type="submit" class="btn btn-primary">
+                    Registrar
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="{{ '/assets/js/validacion.js' | url }}"></script>

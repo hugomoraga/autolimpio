@@ -1,0 +1,79 @@
+
+  <div class="form-body">
+        <div class="row">
+            <div class="form-holder">
+                <div class="form-content">
+                    <div class="form-items">
+                        <h3 class="text-center py-3">Registro de Cliente</h3>
+
+                    <div class="row ">
+                        <div class="col-8 offset-2 border p-3">
+                            <form class="requires-validation" novalidate>
+
+                                <div class="row py-2">
+                                   <div class="col-md-10 col-10">
+                                       <input class="form-control" type="number" name="rut" placeholder="Rut" required>
+                                       <div class="valid-feedback"></div>
+                                       <div class="invalid-feedback">El Nombre no puede estar en blanco</div>
+                                    </div>
+                                    <div class="col-md-2 col-2">
+                                       <input class="form-control" type="number" name="digito-verificador" placeholder="" required>
+                                       <div class="valid-feedback"></div>
+                                       <div class="invalid-feedback">El rut no puede estar en blanco</div>
+                                    </div>
+                                </div>   
+                            
+       
+                                   <div class="col-md-12 py-2">
+                                      <input class="form-control" type="text" name="name" placeholder="Nombre" required>
+                                      <div class="valid-feedback"></div>
+                                      <div class="invalid-feedback">El Nombre no puede estar en blanco</div>
+                                   </div>
+       
+                                   <div class="col-md-12 py-2">
+                                      <input class="form-control" type="text" name="apellido" placeholder="Apellido" required>
+                                      <div class="valid-feedback"></div>
+                                      <div class="invalid-feedback">El Apellido no puede estar en blanco</div>
+                                   </div>
+
+                                   <div class="col-md-12 py-2">
+                                    <input class="form-control" type="text" name="direccion" placeholder="Direccion" required>
+                                    <div class="valid-feedback"></div>
+                                    <div class="invalid-feedback">La direccion no puede estar en blanco</div>
+                                   </div>
+       
+                                  <div class="col-md-12 py-2">
+                                       <select class="form-select" required>
+                                             <option selected disabled value="">Comuna</option>
+                                             <option value="villarrica">Villarrica</option>
+                                             <option value="pucon">Pucon</option>
+                                             <option value="pitrufquen">Pitrufquen</option>
+                                             <option value="Freire">Freire</option>
+                                             <option value="temuco">Temuco</option>
+                                      </select>
+                                       <div class="valid-feedback">Comuna seleccionada</div>
+                                       <div class="invalid-feedback">Selecciona una comuna</div>
+                                  </div>
+       
+                               <div class="form-check">
+                                 <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                                 <label class="form-check-label">Confirmo que la informacion es correcta</label>
+                                <div class="invalid-feedback">Por favor confirmar que la informacion es correcta</div>
+                               </div>
+        
+                                <div class="form-button mt-3">
+                                       <button id="submit" type="submit" class="btn btn-primary">Registrar</button>
+                                   </div>
+                               </form>
+                        </div>
+                    </div>
+
+ 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<script src="{{ '/assets/js/validacion.js' | url }}"></script>

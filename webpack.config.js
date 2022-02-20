@@ -24,7 +24,6 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         { from: "src/assets/js/", to: "js/" }
-       
       ],
     }),
   ]
